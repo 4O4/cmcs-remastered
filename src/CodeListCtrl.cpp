@@ -166,7 +166,8 @@ int CCodeListCtrl::GetItemText( int iItem, LPTSTR pszText, int cchTextMax )
 	if( NULL == pszText )
 	{
 		// Just calculate size of buffer required
-		for( int nLen = 128, nRes = 127; nRes == nLen - 1; nLen *= 2 )
+		int nLen, nRes; // FIXME: There is probably some better way to write this code
+		for( nLen = 128, nRes = 127; nRes == nLen - 1; nLen *= 2 )
 		{
 			if( pszText )
 				delete [] pszText;

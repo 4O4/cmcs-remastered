@@ -518,7 +518,8 @@ CME_CODE CEdit::RegisterLanguage( LPCTSTR pszName, CM_LANGUAGE *pLang )
 
 	// make sure the same language is not registered twice
 	BOOL bDupe = FALSE;
-	for ( int i = 0; i < g_nLanguageCount; i++ )
+	int i; // FIXME: There is probably some better way to write this code
+	for ( i = 0; i < g_nLanguageCount; i++ )
 	{
 		if ( _tcsicmp( g_pLanguages[ i ]->m_szName, pszName ) == 0 )
 		{
@@ -565,7 +566,8 @@ BOOL CEdit::UnregisterLanguage( LPCTSTR pszName )
 	if ( g_pLanguages )
 	{
 		// find the language
-		for ( int nLanguage = 0; nLanguage < g_nLanguageCount; nLanguage++ )
+		int nLanguage; // FIXME: There is probably some better way to write this code
+		for ( nLanguage = 0; nLanguage < g_nLanguageCount; nLanguage++ )
 		{
 			if ( _tcsicmp( g_pLanguages[ nLanguage ]->m_szName, pszName ) == 0 )
 			{

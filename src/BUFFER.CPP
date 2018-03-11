@@ -1191,7 +1191,7 @@ BOOL CBuffer::SetLanguage( CM_LANGUAGE *pLang )
 	DeleteLanguageInfo();
 
 	// allocate storage for each list of tokens
-	for ( i = 0; i < ARRAY_SIZE( LangInfo ); i++ )
+	for ( int i = 0; i < ARRAY_SIZE( LangInfo ); i++ )
 	{
 	_LangInfo *pInfo = LangInfo + i;
 	*pInfo->ppszTokensOut = *pInfo->pnTokensIn ? new LPCTSTR[ *pInfo->pnTokensIn ] : NULL;
@@ -1206,7 +1206,7 @@ BOOL CBuffer::SetLanguage( CM_LANGUAGE *pLang )
 	ZeroMemory( m_pLangBuff, cbLangBuff * sizeof( TCHAR ) );
 	ZeroMemory( m_CharIsKeyword, sizeof( m_CharIsKeyword ) );
 
-	for ( i = 0; i < ARRAY_SIZE( LangInfo ); i++ )
+	for ( int i = 0; i < ARRAY_SIZE( LangInfo ); i++ )
 	{
 		_LangInfo *pInfo = LangInfo + i;
 		int nKeywords = *pInfo->pnTokensIn;
@@ -1270,7 +1270,7 @@ BOOL CBuffer::SetLanguage( CM_LANGUAGE *pLang )
 	m_dwLangStyle = pLang->dwStyle;
 
 	// now, sort the separate lists
-	for ( i = 0; i < ARRAY_SIZE( LangInfo ); i++ )
+	for ( int i = 0; i < ARRAY_SIZE( LangInfo ); i++ )
 	{
 		_LangInfo *pInfo = LangInfo + i;
 		qsort( *pInfo->ppszTokensOut, *pInfo->pnTokensIn, sizeof( LPCTSTR ), TokenSortProc );

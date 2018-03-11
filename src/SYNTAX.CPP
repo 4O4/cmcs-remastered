@@ -644,7 +644,7 @@ BOOL CBuffer::ScopeWord1MatchesScopeWord2( int nTokenIDScope1, int nTokenIDScope
 	ASSERT( pszScope1b );
 
 	// Find both IDs in the scope2 list
-	for ( i = 0; ( !pszScope2a || !pszScope2b ) && i < m_nScopeKeywords; i++ )
+	for ( int i = 0; ( !pszScope2a || !pszScope2b ) && i < m_nScopeKeywords; i++ )
 	{
 		LPCTSTR pszScopeWord = m_pScopeKeywords2[ i ];
 		int nTokenID = TOKEN_ID( pszScopeWord );

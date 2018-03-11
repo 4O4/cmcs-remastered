@@ -2317,7 +2317,7 @@ void CEdit::GenerateFontVariations( HDC hDC, const LOGFONT &lfBase, FONT_DATA *m
 	
 	// pass 2: fix up the widths to account for the extra space required and
 	// fixup the descent shifts so baselines line up
-	for ( i = 0; i < NUM_FONT_VARIATIONS; i++ )
+	for ( int i = 0; i < NUM_FONT_VARIATIONS; i++ )
 	{
 		FONT_DATA *pFont = m_pFonts + i;
 		pFont->cxExtraSpacing = cxChar - pFont->cxExtraSpacing;

@@ -143,7 +143,7 @@ void CPropInfo::AddHotKey( CM_HOTKEY &cmHotKey, WORD wCmd )
 
 	// check to see if have a 'remove' record for this hotkey
 	// and remove if so
-	for ( i = 0; i < m_nRemoveCount; i++ )
+	for ( int i = 0; i < m_nRemoveCount; i++ )
 	{
 		if ( m_pcmRemoveKey[ i ] == cmHotKey )
 		{
@@ -181,7 +181,7 @@ void CPropInfo::RemoveHotKey( CM_HOTKEY &cmHotKey )
 
 	// check to see if have an 'add' record for this hotkey
 	// and remove if so
-	for ( i = 0; i < m_nAddCount; i++ )
+	for ( int i = 0; i < m_nAddCount; i++ )
 	{
 		if ( m_pcmAddKey[ i ] == cmHotKey )
 		{
@@ -228,7 +228,7 @@ void CPropInfo::ResetHotKeys()
 	}
 
 	// Now, add 'add' records for all default hotkeys
-	for ( i = 0; i < CEdit::g_nDefHotKeyCount; i++ )
+	for ( int i = 0; i < CEdit::g_nDefHotKeyCount; i++ )
 	{
 		_defhotkeyrec *pHotKey = &CEdit::g_DefHotKeys[ i ];
 		CM_HOTKEY cmHotKey = { pHotKey->fsModifiers1, pHotKey->nVirtKey1,
@@ -576,7 +576,7 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			HWND hWndBack = GetDlgItem( hWndDlg, IDC_BACK_COMBO );
 			HWND hWndFore = GetDlgItem( hWndDlg, IDC_FORE_COMBO );
 			SendMessage( hWndBack, CB_ADDSTRING, 0, CLR_INVALID );
-			for ( i = 0; i < ARRAY_SIZE( Colors ); i++ )
+			for ( int i = 0; i < ARRAY_SIZE( Colors ); i++ )
 			{
 				SendMessage( hWndBack, CB_ADDSTRING, 0, Colors[ i ] );
 				SendMessage( hWndFore, CB_ADDSTRING, 0, Colors[ i ] );
@@ -630,7 +630,7 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 
 			
 			HWND hWndFontStyle = GetDlgItem( hWndDlg, IDC_FONT_STYLE );
-			for ( i = 0; i < ARRAY_SIZE( FontStyles ); i++ )
+			for ( int i = 0; i < ARRAY_SIZE( FontStyles ); i++ )
 			{
 				int nItem = SendMessage( hWndFontStyle, CB_ADDSTRING, 0, ( LPARAM ) LoadStringPtr( FontStyles[ i ].unName ) );
 				SendMessage( hWndFontStyle, CB_SETITEMDATA, nItem, FontStyles[ i ].byVal );
@@ -735,7 +735,8 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 
 			// pick the fore color
 			int nCBCount = SendMessage( hWndFore, CB_GETCOUNT, 0, 0 );
-			for ( int i = 0; i < nCBCount; i++ )
+			int i; // FIXME: There is probably some better way to write this code
+			for ( i = 0; i < nCBCount; i++ )
 			{
 				if ( ( COLORREF ) SendMessage( hWndFore, CB_GETITEMDATA, i, 0 ) == pInfo->m_crFore[ nAspect ] )
 				{
@@ -755,7 +756,8 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			if ( bHasStyle )
 			{
 				int nCBCount = SendMessage( hWndFontStyle, CB_GETCOUNT, 0, 0 );
-				for ( int i = 0; i < nCBCount; i++ )
+				int i; // FIXME: There is probably some better way to write this code
+				for ( i = 0; i < nCBCount; i++ )
 				{
 					if ( ( BYTE ) SendMessage( hWndFontStyle, CB_GETITEMDATA, i, 0 ) == pInfo->m_byFontStyles[ nAspect ] )
 					{
@@ -1161,7 +1163,7 @@ BOOL CALLBACK PageKeyboardDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPARA
 				}
 			}
 			
-			for ( i = 0; i < pCtrl->g_nRegCmdCount; i++ )
+			for ( int i = 0; i < pCtrl->g_nRegCmdCount; i++ )
 			{
 				WORD wCmd = pCtrl->g_pRegCmds[ i ].wCmd;
 				pCtrl->GetCommandString( wCmd, FALSE, szCmd, ARRAY_SIZE( szCmd ) );
@@ -1261,7 +1263,7 @@ BOOL CALLBACK PageKeyboardDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPARA
 				}
 
 				BOOL bRemoved = FALSE;
-				for ( i = 0; i < pInfo->m_nRemoveCount; i++ )
+				for ( int i = 0; i < pInfo->m_nRemoveCount; i++ )
 				{
 					if ( pInfo->m_pcmRemoveKey[ i ] == cmHotKey )
 					{
@@ -1371,7 +1373,7 @@ BOOL CALLBACK PageKeyboardDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPARA
 				}
 
 				nHotKeys = pInfo->m_nAddCount;
-				for ( i = 0; i < nHotKeys; i++ )
+				for ( int i = 0; i < nHotKeys; i++ )
 				{
 					if ( pInfo->m_pwAddCmd[ i ] == wCmd )
 					{

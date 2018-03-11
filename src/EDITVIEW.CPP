@@ -209,7 +209,7 @@ void CEditView::Draw( HDC hDC, LPRECT prcClipBox, CSelection *pSel ) const
 	int xDividerStart = m_rcView.left + cxLeftMargin2;
 
 	// draw the text
-	for ( nLine = nRowStart, y = ySnap; nLine <= nLastLine; nLine++, y += m_cyLine )
+	for ( int nLine = nRowStart, y = ySnap; nLine <= nLastLine; nLine++, y += m_cyLine )
 		DrawLine( nLine, hDC, x, y, xDividerStart );
 
 	// draw the selection as a separate pass, because the text will overlap slightly
@@ -217,7 +217,7 @@ void CEditView::Draw( HDC hDC, LPRECT prcClipBox, CSelection *pSel ) const
 	// overlapping regions, resulting in normal display.
 	if ( pSel )
 	{
-		for ( nLine = nRowStart, y = ySnap; nLine <= nLastLine; nLine++, y += m_cyLine )
+		for ( int nLine = nRowStart, y = ySnap; nLine <= nLastLine; nLine++, y += m_cyLine )
 		{
 			if ( ( nLine >= nSelStartRow ) && ( nLine <= nSelEndRow ) )
 			{

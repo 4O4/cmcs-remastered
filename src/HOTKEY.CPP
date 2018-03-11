@@ -251,7 +251,7 @@ BOOL CEdit::UnregisterHotKey( CM_HOTKEY &cmHotKey )
 		ASSERT( g_nHotKeyCount >= 0 );
 
 	#ifdef _DEBUG
-	for ( x = 0; x < g_nHotKeyCount - 1; x++ )
+	for ( int x = 0; x < g_nHotKeyCount - 1; x++ )
 	{
 		ASSERT( cmp_hotkeys( &g_pHotKeys[ x ].cmHotKey, &g_pHotKeys[ x + 1 ].cmHotKey ) < 0 ); 
 	}

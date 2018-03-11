@@ -53,7 +53,8 @@ LRESULT CEdit::OnDestroy( WPARAM /* wParam */, LPARAM /* lParam */ )
 	DeleteOffScreenBitmap();
 
 	// find the hWnd in the master list so it can be removed
-	for ( int nhWnd = 0; nhWnd < g_nhWndCount; nhWnd++ )
+	int nhWnd; // FIXME: There is probably some better way to write this code
+	for ( nhWnd = 0; nhWnd < g_nhWndCount; nhWnd++ )
 	{
 		if ( g_phWnds[ nhWnd ] == m_hWnd )
 		{
@@ -818,11 +819,11 @@ LRESULT CEdit::OnHScroll( WPARAM wParam, LPARAM lParam )
 		{
 			// this view claimed ownership of hWndScrollBar and handled the message
 			m_Selection.UpdateCaretPosition();
-			break;
+			return i < m_nViews;
 		}
 	}
 
-	return i < m_nViews;
+	return false;
 }
 
 LRESULT CEdit::OnVScroll( WPARAM wParam, LPARAM lParam )
@@ -848,11 +849,11 @@ LRESULT CEdit::OnVScroll( WPARAM wParam, LPARAM lParam )
 		{
 			// this view claimed ownership of hWndScrollBar and handled the message
 			m_Selection.UpdateCaretPosition();
-			break;
+			return i < m_nViews;
 		}
 	}
 
-	return i < m_nViews;
+	return false;
 }
 
 LRESULT CEdit::OnMouseWheel( WPARAM wParam, LPARAM lParam )

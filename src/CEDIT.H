@@ -117,8 +117,7 @@ class CEdit
 	friend class CDropTarget;
 	friend class CPropInfo;
 	friend class CControlState;
-	friend void CEditView::DrawLine( int nLine, HDC hDC, int x, int y, int xDividerStart ) const;
-	friend void CEditView::Draw( HDC hDC, LPRECT prcClipBox, CSelection *pSel ) const;
+	friend class CEditView;
 
 	public:
 

@@ -244,7 +244,7 @@ void CEdit::DoSelfTest()
 	ASSERT( CM_SetMarginImages( m_hWndTest, 3, 0 ) == CME_SUCCESS );
 	ASSERT( CM_GetMarginImages( m_hWndTest, 3 ) == 0 );
 
-	for ( i = nTestLines - 1; i >= 0; i-- )
+	for ( int i = nTestLines - 1; i >= 0; i-- )
 	{
 		int cbLine = CM_GetLineLength( m_hWndTest, i, FALSE );
 		ASSERT( cbLine == ( int ) _tcslen( pszTestLines[ i ] ) );
