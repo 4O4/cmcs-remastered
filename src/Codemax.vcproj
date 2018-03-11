@@ -3223,6 +3223,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\codemax.rc2"
+				>
+			</File>
+			<File
 				RelativePath="res\cursor1.cur"
 				>
 			</File>
