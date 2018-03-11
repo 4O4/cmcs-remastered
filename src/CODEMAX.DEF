@@ -5,18 +5,18 @@ EXPORTS
 	CMUnregisterControl			@2
 	CMRegisterLanguage			@3
 	CMUnregisterLanguage		@4
-	CMUnregisterAllLanguages	@5
-	CMGetLanguageDef			@6
-	CMGetHotKeys				@7
-	CMSetHotKeys				@8
-	CMResetDefaultHotKeys		@9
-	CMGetHotKeysForCmd			@10
-	CMRegisterHotKey			@11
-	CMUnregisterHotKey			@12
-	CMGetCommandString			@13
-	CMGetMacro					@14
-	CMSetMacro					@15
-	CMSetFindReplaceMRUList		@16
-	CMGetFindReplaceMRUList		@17
-	CMRegisterCommand			@18
-	CMUnregisterCommand			@19
+	CMGetHotKeys				@5
+	CMSetHotKeys				@6
+	CMResetDefaultHotKeys		@7
+	CMGetHotKeysForCmd			@8
+	CMRegisterHotKey			@9
+	CMUnregisterHotKey			@10
+	CMGetCommandString			@11
+	CMGetMacro					@12
+	CMSetMacro					@13
+	CMSetFindReplaceMRUList		@14
+	CMGetFindReplaceMRUList		@15
+	CMRegisterCommand			@16
+	CMUnregisterCommand			@17
+	CMUnregisterAllLanguages	@18
+	CMGetLanguageDef			@19
