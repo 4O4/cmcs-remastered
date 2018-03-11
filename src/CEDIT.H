@@ -8,6 +8,7 @@
 #include "editsel.h"
 #include "editview.h"
 #include "dragdrop.h"
+#include "misc.h" // TODO: Remove when DEF_* macros are not referenced anymore
 
 #ifdef _CODEMAX_BETA
 void DrawBetaBackground( HDC hDC, const RECT &rc, COLORREF crWindow );
@@ -417,11 +418,16 @@ class CEdit
 
 		__forceinline BOOL UseColorSyntax() const		{ return m_bColorSyntax && m_Buffer.HasLanguage(); }
 		HFONT GetTokenFont( CBuffer::LangToken eToken, long &cxExtraSpacing, long &cyDescentShift, FONT_DATA *pFonts ) const;
-		HFONT GetLineNumberFont() const	{ return m_font[ m_FontStyles.byLineNumber ].hFont; }
-		COLORREF GetLineNumberForeColor() const	{ return m_Colors.crLineNumber; }
-		COLORREF GetLineNumberBackColor() const	{ return m_Colors.crLineNumberBk; }
-		COLORREF GetHDividerLineColor() const	{ return m_Colors.crHDividerLines; }
-		COLORREF GetVDividerLineColor() const	{ return m_Colors.crVDividerLines; }
+		//HFONT GetLineNumberFont() const	{ return m_font[ m_FontStyles.byLineNumber ].hFont; } // TODO: restore this line and remove line below
+		HFONT GetLineNumberFont() const	{ return m_font[ m_FontStyles.byText ].hFont; }
+		//COLORREF GetLineNumberForeColor() const	{ return m_Colors.crLineNumber; } // TODO: restore this line and remove line below
+		COLORREF GetLineNumberForeColor() const	{ return m_Colors.crText; }
+		//COLORREF GetLineNumberBackColor() const	{ return m_Colors.crLineNumberBk; } // TODO: restore this line and remove line below
+		COLORREF GetLineNumberBackColor() const	{ return m_Colors.crTextBk; }
+		////COLORREF GetHDividerLineColor() const	{ return m_Colors.crHDividerLines; } // TODO: restore this line and remove line below
+		COLORREF GetHDividerLineColor() const	{ return DEF_CLRHDIVIDERLINES; }
+		//COLORREF GetVDividerLineColor() const	{ return m_Colors.crVDividerLines; } // TODO: restore this line and remove line below
+		COLORREF GetVDividerLineColor() const	{ return DEF_CLRVDIVIDERLINES; }
 		COLORREF GetTokenColor( CBuffer::LangToken eToken, BOOL bTextColor ) const;
 		COLORREF GetWindowColor( BOOL bSafe ) const;
 		COLORREF GetLeftMarginColor() const	 { return m_Colors.crLeftMargin; }
@@ -429,7 +435,8 @@ class CEdit
 		COLORREF GetBookmarkBkColor() const;
 		__forceinline BOOL DisplayWhitespace() const	{ return m_bDisplayWhitespace; }
 		__forceinline int GetHighlightedLine() const { return m_nHighlightedLine; }
-		__forceinline COLORREF GetHighlightedLineColor() const	{ return m_Colors.crHighlightedLine; }
+		//__forceinline COLORREF GetHighlightedLineColor() const	{ return m_Colors.crHighlightedLine; } // TODO: restore this line and remove line below
+		__forceinline COLORREF GetHighlightedLineColor() const	{ return DEF_CLRHIGHLIGHTEDLINE; }
 		__forceinline BOOL LineNumberingEnabled( int &nRadix ) const
 			{ nRadix = m_LineNum.dwStyle; return m_LineNum.bEnabled; }
 		__forceinline BOOL LineNumberingEnabled() const

@@ -322,7 +322,7 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			Colors.crCommentBk = m_crBack[ IDX_COMMENT ];
 			Colors.crString = m_crFore[ IDX_STRING ];
 			Colors.crStringBk = m_crBack[ IDX_STRING ];
-			Colors.crTagText = m_crFore[ IDX_TAGTEXT ];
+			/*Colors.crTagText = m_crFore[ IDX_TAGTEXT ];
 			Colors.crTagTextBk = m_crBack[ IDX_TAGTEXT ];
 			Colors.crTagEntity = m_crFore[ IDX_TAGENT ];
 			Colors.crTagEntityBk = m_crBack[ IDX_TAGENT ];
@@ -334,7 +334,7 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			Colors.crLineNumberBk = m_crBack[ IDX_LINENUMBER ];
 			Colors.crHDividerLines = m_crFore[ IDX_HDIVIDERLINES ];
 			Colors.crVDividerLines = m_crFore[ IDX_VDIVIDERLINES ];
-			Colors.crHighlightedLine = m_crFore[ IDX_HIGHLIGHTEDLINE ];
+			Colors.crHighlightedLine = m_crFore[ IDX_HIGHLIGHTEDLINE ];*/// TODO: uncomment when 2.0 compatible structs are restored
 			SendMessage( hWnd, CMM_SETCOLORS, 0, ( LPARAM ) &Colors );
 
 			SendMessage( hWnd, WM_SETFONT, ( WPARAM ) CreateFontIndirect( &m_lf ), MAKELPARAM( TRUE, 0 ) );
@@ -349,11 +349,11 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			FontStyles.byScopeKeyword = m_byFontStyles[ IDX_SCOPEKEYWORD ];
 			FontStyles.byComment = m_byFontStyles[ IDX_COMMENT ];
 			FontStyles.byString = m_byFontStyles[ IDX_STRING ];
-			FontStyles.byTagText = m_byFontStyles[ IDX_TAGTEXT ];
+			/*FontStyles.byTagText = m_byFontStyles[ IDX_TAGTEXT ];
 			FontStyles.byTagEntity = m_byFontStyles[ IDX_TAGENT ];
 			FontStyles.byTagElementName = m_byFontStyles[ IDX_TAGELEMNAME ];
 			FontStyles.byTagAttributeName = m_byFontStyles[ IDX_TAGATTRNAME ];
-			FontStyles.byLineNumber = m_byFontStyles[ IDX_LINENUMBER ];
+			FontStyles.byLineNumber = m_byFontStyles[ IDX_LINENUMBER ];*/ // TODO: uncomment when 2.0 compatible structs are restored
 
 			SendMessage( hWnd, CMM_SETFONTSTYLES, 0, ( LPARAM ) &FontStyles );
 		}
@@ -601,7 +601,7 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			pInfo->m_crBack[ IDX_COMMENT ] = pCtrl->m_Colors.crCommentBk;
 			pInfo->m_crFore[ IDX_STRING ] = pCtrl->m_Colors.crString;
 			pInfo->m_crBack[ IDX_STRING ] = pCtrl->m_Colors.crStringBk;
-			pInfo->m_crFore[ IDX_TAGTEXT ] = pCtrl->m_Colors.crTagText;
+			/*pInfo->m_crFore[ IDX_TAGTEXT ] = pCtrl->m_Colors.crTagText;
 			pInfo->m_crBack[ IDX_TAGTEXT ] = pCtrl->m_Colors.crTagTextBk;
 			pInfo->m_crFore[ IDX_TAGENT ] = pCtrl->m_Colors.crTagEntity;
 			pInfo->m_crBack[ IDX_TAGENT ] = pCtrl->m_Colors.crTagEntityBk;
@@ -613,7 +613,7 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			pInfo->m_crBack[ IDX_LINENUMBER ] = pCtrl->m_Colors.crLineNumberBk;
 			pInfo->m_crFore[ IDX_HDIVIDERLINES ] = pCtrl->m_Colors.crHDividerLines;
 			pInfo->m_crFore[ IDX_VDIVIDERLINES ] = pCtrl->m_Colors.crVDividerLines;
-			pInfo->m_crFore[ IDX_HIGHLIGHTEDLINE ] = pCtrl->m_Colors.crHighlightedLine;
+			pInfo->m_crFore[ IDX_HIGHLIGHTEDLINE ] = pCtrl->m_Colors.crHighlightedLine;*/ // TODO: uncomment when 2.0 compatible structs are restored
 
 			// fill the font style combo
 			struct {
@@ -643,11 +643,11 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			pInfo->m_byFontStyles[ IDX_SCOPEKEYWORD ] = pCtrl->m_FontStyles.byScopeKeyword;
 			pInfo->m_byFontStyles[ IDX_COMMENT ] = pCtrl->m_FontStyles.byComment;
 			pInfo->m_byFontStyles[ IDX_STRING ] = pCtrl->m_FontStyles.byString;
-			pInfo->m_byFontStyles[ IDX_TAGTEXT ] = pCtrl->m_FontStyles.byTagText;
+			/*pInfo->m_byFontStyles[ IDX_TAGTEXT ] = pCtrl->m_FontStyles.byTagText;
 			pInfo->m_byFontStyles[ IDX_TAGENT ] = pCtrl->m_FontStyles.byTagEntity;
 			pInfo->m_byFontStyles[ IDX_TAGELEMNAME ] = pCtrl->m_FontStyles.byTagElementName;
 			pInfo->m_byFontStyles[ IDX_TAGATTRNAME ] = pCtrl->m_FontStyles.byTagAttributeName;
-			pInfo->m_byFontStyles[ IDX_LINENUMBER ] = pCtrl->m_FontStyles.byLineNumber;
+			pInfo->m_byFontStyles[ IDX_LINENUMBER ] = pCtrl->m_FontStyles.byLineNumber;*/ // TODO: uncomment when 2.0 compatible structs are restored
 
 			int nSize = GetObject( pCtrl->GetFont( FALSE ), sizeof( LOGFONT ), NULL );
 			VERIFY( GetObject( pCtrl->GetFont( FALSE ), nSize, &pInfo->m_lf ) );

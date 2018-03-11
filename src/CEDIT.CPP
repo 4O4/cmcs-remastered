@@ -110,7 +110,7 @@ CEdit::CEdit( HWND hWnd )
 	m_Colors.crCommentBk		        = DEF_CLRCOMMENTBK;
 	m_Colors.crString			        = DEF_CLRSTRING;
 	m_Colors.crStringBk			        = DEF_CLRSTRINGBK;
-	m_Colors.crTagText				    = DEF_CLRTAGTEXT;
+	/*m_Colors.crTagText				    = DEF_CLRTAGTEXT;
 	m_Colors.crTagTextBk			    = DEF_CLRTAGTEXTBK;
     m_Colors.crTagEntity		        = DEF_CLRTAGENT;
 	m_Colors.crTagEntityBk		        = DEF_CLRTAGENTBK;
@@ -122,7 +122,7 @@ CEdit::CEdit( HWND hWnd )
     m_Colors.crLineNumberBk				= DEF_CLRLINENUMBERBK;
 	m_Colors.crHDividerLines			= DEF_CLRHDIVIDERLINES;
 	m_Colors.crVDividerLines			= DEF_CLRVDIVIDERLINES;
-	m_Colors.crHighlightedLine			= DEF_CLRHIGHLIGHTEDLINE;
+	m_Colors.crHighlightedLine			= DEF_CLRHIGHLIGHTEDLINE;*/ // TODO: uncomment when 2.0 compatible structs are restored
 
 	// default font styles
 	m_FontStyles.byKeyword				= DEF_FSKEYWORD;
@@ -132,11 +132,11 @@ CEdit::CEdit( HWND hWnd )
 	m_FontStyles.byString				= DEF_FSSTRING;
 	m_FontStyles.byText					= DEF_FSTEXT;
 	m_FontStyles.byNumber				= DEF_FSNUMBER;
-	m_FontStyles.byTagText				= DEF_FSTAGTEXT;
+	/*m_FontStyles.byTagText				= DEF_FSTAGTEXT;
 	m_FontStyles.byTagEntity			= DEF_FSTAGENT;
 	m_FontStyles.byTagElementName		= DEF_FSTAGELEMNAME;
 	m_FontStyles.byTagAttributeName		= DEF_FSTAGATTRNAME;
-	m_FontStyles.byLineNumber			= DEF_FSLINENUMBER;
+	m_FontStyles.byLineNumber			= DEF_FSLINENUMBER;*/ // TODO: uncomment when 2.0 compatible structs are restored
 
 	m_LineNum.bEnabled					= DEF_LINENUMENABLE;
 	m_LineNum.nStartAt					= DEF_LINENUMBERSTART;
@@ -1564,11 +1564,11 @@ COLORREF CEdit::GetTokenColor( CBuffer::LangToken eToken, BOOL bTextColor ) cons
 		case CBuffer::eStringDelim: return bTextColor ? m_Colors.crString : m_Colors.crStringBk;
 		case CBuffer::eEscapeSeq:
 		case CBuffer::eText: return bTextColor ? m_Colors.crText : m_Colors.crTextBk;
-		case CBuffer::eTagText: return bTextColor ? m_Colors.crTagText : m_Colors.crTagTextBk;
+		//case CBuffer::eTagText: return bTextColor ? m_Colors.crTagText : m_Colors.crTagTextBk; // TODO: uncomment when 2.0 compatible structs are restored
 		case CBuffer::eNumber: return bTextColor ? m_Colors.crNumber : m_Colors.crNumberBk;
-		case CBuffer::eTagEntity: return bTextColor ? m_Colors.crTagEntity : m_Colors.crTagEntityBk;
+		/*case CBuffer::eTagEntity: return bTextColor ? m_Colors.crTagEntity : m_Colors.crTagEntityBk;
 		case CBuffer::eTagElementName: return bTextColor ? m_Colors.crTagElementName : m_Colors.crTagElementNameBk;
-		case CBuffer::eTagAttributeName: return bTextColor ? m_Colors.crTagAttributeName : m_Colors.crTagAttributeNameBk;
+		case CBuffer::eTagAttributeName: return bTextColor ? m_Colors.crTagAttributeName : m_Colors.crTagAttributeNameBk;*/ // TODO: uncomment when 2.0 compatible structs are restored
 	}
 
 	ASSERT( FALSE );
@@ -1595,11 +1595,11 @@ HFONT CEdit::GetTokenFont( CBuffer::LangToken eToken, long &cxExtraSpacing, long
 			case CBuffer::eStringDelim:						nFont = m_FontStyles.byString; break;
 			case CBuffer::eEscapeSeq:
 			case CBuffer::eText:							nFont = m_FontStyles.byText; break;
-			case CBuffer::eTagText:							nFont = m_FontStyles.byTagText; break;
+			//case CBuffer::eTagText:							nFont = m_FontStyles.byTagText; break; // TODO: uncomment when 2.0 compatible structs are restored
 			case CBuffer::eNumber:							nFont = m_FontStyles.byNumber; break;
-			case CBuffer::eTagEntity:						nFont = m_FontStyles.byTagEntity; break;
+			/*case CBuffer::eTagEntity:						nFont = m_FontStyles.byTagEntity; break;
 			case CBuffer::eTagElementName:					nFont = m_FontStyles.byTagElementName; break;
-			case CBuffer::eTagAttributeName:				nFont = m_FontStyles.byTagAttributeName; break;
+			case CBuffer::eTagAttributeName:				nFont = m_FontStyles.byTagAttributeName; break;*/ // TODO: uncomment when 2.0 compatible structs are restored
 			default:										nFont = CM_FONT_NORMAL; break;
 		}
 	}

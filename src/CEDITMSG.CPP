@@ -1529,13 +1529,13 @@ LRESULT CEdit::OnSetColors( WPARAM /*wParam*/, LPARAM lParam )
 		 ( pColors->crComment & 0xff000000 ) || 
 		 ( pColors->crScopeKeyword & 0xff000000 ) || 
 		 ( pColors->crString & 0xff000000 ) || 
-		 ( pColors->crOperator & 0xff000000 ) ||
+		 ( pColors->crOperator & 0xff000000 ) /*||
 		 ( pColors->crTagText & 0xff000000 ) || 
 	     ( pColors->crTagEntity & 0xff000000 ) ||
 	     ( pColors->crTagElementName & 0xff000000 ) ||
 	     ( pColors->crTagAttributeName & 0xff000000 ) ||
 	     ( pColors->crLineNumber & 0xff000000 ) ||
-	     ( pColors->crHighlightedLine & 0xff000000 ) )
+	     ( pColors->crHighlightedLine & 0xff000000 )*/ ) // TODO: uncomment when 2.0 compatible structs are restored
 	{
 		// invalid colors
 		ASSERT( FALSE );
@@ -1563,7 +1563,7 @@ LRESULT CEdit::OnSetColors( WPARAM /*wParam*/, LPARAM lParam )
 	m_Colors.crCommentBk = pColors->crCommentBk; if ( m_Colors.crCommentBk != CLR_INVALID ) m_Colors.crCommentBk = GetNearestColor( hDC, pColors->crCommentBk );
 	m_Colors.crString = GetNearestColor( hDC, pColors->crString );
 	m_Colors.crStringBk = pColors->crStringBk; if ( m_Colors.crStringBk != CLR_INVALID ) m_Colors.crStringBk = GetNearestColor( hDC, pColors->crStringBk );
-	m_Colors.crTagText = GetNearestColor( hDC, pColors->crTagText );
+	/*m_Colors.crTagText = GetNearestColor( hDC, pColors->crTagText );
 	m_Colors.crTagTextBk = pColors->crTagTextBk; if ( m_Colors.crTagTextBk != CLR_INVALID ) m_Colors.crTagTextBk = GetNearestColor( hDC, pColors->crTagTextBk );
 	m_Colors.crTagEntity = GetNearestColor( hDC, pColors->crTagEntity );
 	m_Colors.crTagEntityBk = pColors->crTagEntityBk; if ( m_Colors.crTagEntityBk != CLR_INVALID ) m_Colors.crTagEntityBk = GetNearestColor( hDC, pColors->crTagEntityBk );
@@ -1575,7 +1575,7 @@ LRESULT CEdit::OnSetColors( WPARAM /*wParam*/, LPARAM lParam )
 	m_Colors.crLineNumberBk = pColors->crLineNumberBk; if ( m_Colors.crLineNumberBk != CLR_INVALID ) m_Colors.crLineNumberBk = GetNearestColor( hDC, pColors->crLineNumberBk );
 	m_Colors.crHDividerLines = pColors->crHDividerLines;
 	m_Colors.crVDividerLines = pColors->crVDividerLines;
-	m_Colors.crHighlightedLine = GetNearestColor( hDC, pColors->crHighlightedLine );
+	m_Colors.crHighlightedLine = GetNearestColor( hDC, pColors->crHighlightedLine );*/ // TODO: uncomment when 2.0 compatible structs are restored
 	ReleaseDC( NULL, hDC );
 
 	// refresh the display to reflect the changes
@@ -2002,7 +2002,7 @@ LRESULT CEdit::OnGetSel( WPARAM wParam, LPARAM lParam )
 		{
 			m_Selection.GetBufferSelection( pRange->posStart.nCol, pRange->posStart.nLine, pRange->posEnd.nCol, pRange->posEnd.nLine );
 		}
-		pRange->bColumnSel = m_Selection.IsColumnSel();
+		//pRange->bColumnSel = m_Selection.IsColumnSel(); // TODO: uncomment when 2.0 compatible structs are restored
 		return CME_SUCCESS;
 	}
 	else
@@ -2017,7 +2017,7 @@ LRESULT CEdit::OnSetSel( WPARAM wParam, LPARAM lParam )
 	if ( lParam && RangeIsValid( pRange ) )
 	{
 		m_Selection.SetExtendedSelection( pRange->posStart.nCol, pRange->posStart.nLine, pRange->posEnd.nCol, pRange->posEnd.nLine, wParam != 0 );
-		m_Selection.EnableColumnSel( pRange->bColumnSel );
+		//m_Selection.EnableColumnSel( pRange->bColumnSel ); // TODO: uncomment when 2.0 compatible structs are restored
 		// if in the middle of dragging or whatever, bail now -- the caller
 		// modified the selection and probably doesn't want the drag to continue.
 		CancelMode();

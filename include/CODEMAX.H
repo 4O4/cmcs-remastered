@@ -438,9 +438,9 @@ typedef struct _CM_LANGUAGE {
     LPCTSTR pszStringDelims;             // The string literal delimiters (e.g. "\"\n'") -- also includes character literals
     TCHAR   chEscape;                    // The escape character
     TCHAR   chTerminator;                // The statement terminator char (usually ';')
-    LPCTSTR pszTagElementNames;          // Tag-based element names delimited by '\n'
-    LPCTSTR pszTagAttributeNames;        // Tag-based attribute names delimited by '\n'
-    LPCTSTR pszTagEntities;              // Tag-based entities delimited by '\n'
+    //LPCTSTR pszTagElementNames;          // Tag-based element names delimited by '\n' // TODO: restore
+    //LPCTSTR pszTagAttributeNames;        // Tag-based attribute names delimited by '\n' // TODO: restore
+    //LPCTSTR pszTagEntities;              // Tag-based entities delimited by '\n' // TODO: restore
 } CM_LANGUAGE;
 
 /////////////////////////////////////////////////////////////
@@ -469,19 +469,19 @@ typedef struct _CM_COLORS {
     COLORREF crCommentBk;            // comment background color
     COLORREF crString;               // string foreground color
     COLORREF crStringBk;             // string background color
-    COLORREF crTagText;              // plain tag text foreground color
-    COLORREF crTagTextBk;            // plain tag text background color
-    COLORREF crTagEntity;            // tag entity foreground color
-    COLORREF crTagEntityBk;          // tag entity background color
-    COLORREF crTagElementName;       // tag element name foreground color
-    COLORREF crTagElementNameBk;     // tag element name background color
-    COLORREF crTagAttributeName;     // tag attribute name foreground color
-    COLORREF crTagAttributeNameBk;   // tag attribute name background color
-    COLORREF crLineNumber;           // line number foreground color
-    COLORREF crLineNumberBk;         // line number background color
-    COLORREF crHDividerLines;        // line number separate line color
-    COLORREF crVDividerLines;        // left margin separate line color
-    COLORREF crHighlightedLine;      // highlighted line color
+    //COLORREF crTagText;              // plain tag text foreground color // TODO: restore
+    //COLORREF crTagTextBk;            // plain tag text background color // TODO: restore
+    //COLORREF crTagEntity;            // tag entity foreground color // TODO: restore
+    //COLORREF crTagEntityBk;          // tag entity background color // TODO: restore
+    //COLORREF crTagElementName;       // tag element name foreground color // TODO: restore
+    //COLORREF crTagElementNameBk;     // tag element name background color // TODO: restore
+    //COLORREF crTagAttributeName;     // tag attribute name foreground color // TODO: restore
+    //COLORREF crTagAttributeNameBk;   // tag attribute name background color // TODO: restore
+    //COLORREF crLineNumber;           // line number foreground color // TODO: restore
+    //COLORREF crLineNumberBk;         // line number background color // TODO: restore
+    //COLORREF crHDividerLines;        // line number separate line color // TODO: restore
+    //COLORREF crVDividerLines;        // left margin separate line color // TODO: restore
+    //COLORREF crHighlightedLine;      // highlighted line color // TODO: restore
 } CM_COLORS;
 
 /////////////////////////////////////////////////////////////
@@ -498,11 +498,11 @@ typedef struct _CM_FONTSTYLES {
     BYTE byScopeKeyword;         // scope keyword font style
     BYTE byComment;              // comment font style
     BYTE byString;               // string font style
-    BYTE byTagText;              // plain tag text font style
-    BYTE byTagEntity;            // tag entity font style
-    BYTE byTagElementName;       // tag element name font style
-    BYTE byTagAttributeName;     // tag attribute name font style
-    BYTE byLineNumber;           // line number font style
+    //BYTE byTagText;              // plain tag text font style // TODO: restore
+    //BYTE byTagEntity;            // tag entity font style // TODO: restore
+    //BYTE byTagElementName;       // tag element name font style // TODO: restore
+    //BYTE byTagAttributeName;     // tag attribute name font style // TODO: restore
+    //BYTE byLineNumber;           // line number font style // TODO: restore
 } CM_FONTSTYLES;
 
 /////////////////////////////////////////////////////////////
@@ -568,7 +568,7 @@ typedef struct _CM_POSITION {
 typedef struct _CM_RANGE {
     CM_POSITION posStart;  // the anchor
     CM_POSITION posEnd;    // the extension (if same as anchor, selection is empty)
-    BOOL bColumnSel;       // TRUE if is a column selection, FALSE if paragragh selection
+    //BOOL bColumnSel;       // TRUE if is a column selection, FALSE if paragragh selection // TODO: restore
 } CM_RANGE;
 
 /////////////////////////////////////////////////////////////
