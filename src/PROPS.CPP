@@ -1,9 +1,5 @@
 #include "precomp.h"
 #include "cedit.h"
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ceditx.h"
-#endif
 #include "hkeyctrl.h"
 #include "resource.h"
 #include "CodeListCtrl.h"
@@ -432,9 +428,6 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			break;
 		}
 	}
-	#ifdef _ACTIVEX
-	CEditX::ResetAccelTable();
-	#endif
 }
 
 void OnPropChanged( HWND hWndPropPage )

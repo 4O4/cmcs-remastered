@@ -18,24 +18,6 @@
 #endif
 #define _WIN32_WINNT 0x0400 // for WM_MOUSEWHEEL
 
-#ifdef _ACTIVEX
-#define _ATL_APARTMENT_THREADED
-#define STRICT
-
-#define CM_X_VERSION 2
-
-#define _ATL_STATIC_REGISTRY 
-
-//#define ATL_TRACE_LEVEL 0xfffffff  // uncomment for ATL trace messages
-#include <atlbase.h>
-//You may derive a class from CComModule and use it if you want to override
-//something, but do not change the name of _Module
-extern CComModule _Module;
-#include <atlcom.h>
-#include <atlctl.h>
-#include <docobj.h>
-#endif
-
 #define NOTOOLBAR
 #define NOUPDOWN
 #define NOSTATUSBAR
@@ -62,16 +44,6 @@ extern CComModule _Module;
 #include "codemax.h"
 #include "cedit.h"
 #include "misc.h"
-
-#ifdef _ATL_STATIC_REGISTRY
-#include <statreg.h>
-#include <statreg.cpp>
-#endif
-
-#include <atlbase.h>
-#include <atlimpl.cpp>
-#include <atlctl.cpp>
-#include <atlwin.cpp>
 
 #pragma warning ( disable : 4100 )
 #include <climits>

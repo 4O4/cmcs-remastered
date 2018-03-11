@@ -13,11 +13,6 @@
 #include <commctrl.h>
 #include "CodeTipHighlightCtrl.h"
 
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ICodeTipHighlight.h"
-#endif//#ifdef _ACTIVEX
-
 
 //***************************************************************************
 // Public Member Functions
@@ -33,23 +28,6 @@ CCodeTipHighlightCtrl::~CCodeTipHighlightCtrl()
 // GetDispatch --------------------------------------------------------------
 LPDISPATCH CCodeTipHighlightCtrl::GetDispatch()
 {
-#ifdef _ACTIVEX
-
-	if( NULL == m_lpDispatch )
-	{
-		CComObject<CICodeTipHighlight>* pNew = NULL;
-		HRESULT hR = pNew->CreateInstance( &pNew );
-
-		if( SUCCEEDED( hR ) )
-		{
-			pNew->AddRef();
-			pNew->m_pCtrl = this;
-			m_lpDispatch = pNew;
-		}
-	}
-
-#endif//#ifdef _ACTIVEX
-
 	return m_lpDispatch;
 }
 

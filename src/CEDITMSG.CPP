@@ -1,10 +1,6 @@
 #include "precomp.h"
 #include "cedit.h"
 #include "resource.h"
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ceditx.h"
-#endif
 
 #include "CodeTipCtrl.h"
 #include "CodeListCtrl.h"
@@ -83,14 +79,6 @@ LRESULT CEdit::OnDestroy( WPARAM /* wParam */, LPARAM /* lParam */ )
 		}
 	}
 	g_nhWndCount--;
-
-#ifdef _ACTIVEX
-	if ( m_pEditX )
-	{
-		m_pEditX->SetEdit( NULL );
-		m_pEditX = NULL;
-	}
-#endif
 
 	if( m_pCodeTip )
 		m_pCodeTip->DestroyWindow();
@@ -278,10 +266,6 @@ LRESULT CEdit::OnSetFont( WPARAM wParam, LPARAM lParam )
 	{
 		SetDisplayFont( hFont, FALSE );
 		OnFontChanged();
-		#ifdef _ACTIVEX
-		if ( m_pEditX )
-			m_pEditX->OnFontChanged();
-		#endif
 
 		// default behavior will dirty window if necessary
 		lResult = DefWindowProc( m_hWnd, WM_SETFONT, wParam, lParam );

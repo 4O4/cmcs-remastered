@@ -13,10 +13,6 @@
 void DrawBetaBackground( HDC hDC, const RECT &rc, COLORREF crWindow );
 #endif
 
-#ifdef _ACTIVEX
-class CEditX;
-#endif
-
 
 class CHotKey
 {
@@ -137,11 +133,6 @@ class CEdit
 		__forceinline CSelection *GetSelection()	{ return &m_Selection; }
 		HFONT GetFont( BOOL bAsSuppliedByCaller ) const	{ ASSERT( m_font[ 0 ].hFont ); return bAsSuppliedByCaller ? m_hFont : m_font[ 0 ].hFont; }
 		int GetCharWidth() const	{ return m_cxChar; }
-
-#ifdef _ACTIVEX
-		friend class CEditX;
-		void SetEditX( CEditX *pEditX ) { m_pEditX = pEditX; }
-#endif
 
 		BOOL ShowHScrollBar() const	{ return HAS_FLAG( m_dwStyle, WS_HSCROLL ); }
 		BOOL ShowVScrollBar() const	{ return HAS_FLAG( m_dwStyle, WS_VSCROLL ); }
@@ -351,10 +342,6 @@ class CEdit
 
 		// the line numbering options
 		CM_LINENUMBERING m_LineNum;
-
-#ifdef _ACTIVEX
-		CEditX *m_pEditX;
-#endif
 
 		
 		// all cursors are shared between all CodeMax windows

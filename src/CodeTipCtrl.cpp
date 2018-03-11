@@ -16,11 +16,6 @@
 #include "CodeTipFuncHighlightCtrl.h"
 #include "CodeTipMultiFuncCtrl.h"
 
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ICodeTip.h"
-#endif//#ifdef _ACTIVEX
-
 
 //***************************************************************************
 // Public Member Functions
@@ -251,23 +246,6 @@ BOOL CCodeTipCtrl::NotifyCancel()
 // GetDispatch --------------------------------------------------------------
 LPDISPATCH CCodeTipCtrl::GetDispatch()
 {
-#ifdef _ACTIVEX
-
-	if( NULL == m_lpDispatch )
-	{
-		CComObject<CICodeTip>* pNew = NULL;
-		HRESULT hR = pNew->CreateInstance( &pNew );
-
-		if( SUCCEEDED( hR ) )
-		{
-			pNew->AddRef();
-			pNew->m_pCtrl = this;
-			m_lpDispatch = pNew;
-		}
-	}
-
-#endif//#ifdef _ACTIVEX
-
 	return m_lpDispatch;
 }
 

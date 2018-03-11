@@ -147,9 +147,3 @@ void UnlockAndFreeDialogTemplate( HGLOBAL hTemplate );
 #define DEF_OVERTYPECARET		TRUE
 #define DEF_HIGHLIGHTEDLINE		-1
 #define DEF_BORDERSTYLE			CM_BORDER_NONE
-
-// ActiveX helper functions
-#ifdef _ACTIVEX
-#define CME2HRESULT(x) ( ( x ) == CME_SUCCESS ? S_OK : E_FAIL )
-LPTSTR BSTR2TSTR( BSTR str );
-#endif

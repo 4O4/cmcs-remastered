@@ -1,10 +1,6 @@
 #include "precomp.h"
 #include "cedit.h"
 #include "resource.h"
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ceditx.h"
-#endif
 
 extern HINSTANCE hInstance;
 
@@ -192,10 +188,6 @@ CEdit::CEdit( HWND hWnd )
 	}
 	#endif
 
-#ifdef _ACTIVEX
-	m_pEditX = NULL;
-#endif
-
 	SetMode( eIdle );
 }
 
@@ -217,11 +209,6 @@ CEdit::~CEdit()
 	}
 
 	ASSERT( !m_hDlgRecord );
-
-#ifdef _ACTIVEX
-	if ( m_pEditX )
-		m_pEditX->SetEdit( NULL );
-#endif
 
 	SetMode( eIdle );
 }
@@ -1429,12 +1416,6 @@ CEdit::HitTestCode CEdit::HitTest( int xPos, int yPos, int &nView ) const
 	BOOL bFound = FALSE;
 	nView = -1;
 
-#ifdef _ACTIVEX
-	// show arrow cursor if in design mode
-	if ( m_pEditX && m_pEditX->IsInDesignMode() )
-		return eCode;
-#endif
-
 	RECT rc;
 	ASSERT( IsWindow( m_hWnd ) );
 	GetClientRect( m_hWnd, &rc );
@@ -1712,10 +1693,6 @@ HGLOBAL CEdit::GetSelectionText() const
 // NotifyParent() sends the requested WM_NOTIFY notification to the parent window.
 LRESULT CEdit::NotifyParent( UINT unNotification, LPNMHDR pnmhdr ) const
 {
-#ifdef _ACTIVEX
-	// go thru proper dispatch interface
-	return m_pEditX ? m_pEditX->FireControlEvent( unNotification, pnmhdr ) : 0;
-#else
 	// do WM_NOTIFY processing
 	UINT unCtrlID = GetDlgCtrlID( m_hWnd );
 	NMHDR hdr = { m_hWnd, unCtrlID, unNotification };
@@ -1732,7 +1709,6 @@ LRESULT CEdit::NotifyParent( UINT unNotification, LPNMHDR pnmhdr ) const
 	HWND hWndParent = GetParent( m_hWnd );
 	ASSERT( IsWindow( hWndParent ) );
 	return SendMessage( hWndParent, WM_NOTIFY, ( WPARAM ) unCtrlID, ( LPARAM ) pnmhdr );
-#endif
 }
 
 LRESULT CEdit::NotifyParentOfCmdFailure( DWORD dwErr ) const

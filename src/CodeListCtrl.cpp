@@ -13,11 +13,6 @@
 #include <commctrl.h>
 #include "CodeListCtrl.h"
 
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ICodeList.h"
-#endif//#ifdef _ACTIVEX
-
 
 //***************************************************************************
 // Public Member Functions
@@ -228,23 +223,6 @@ int CCodeListCtrl::FindString( LPCTSTR lpszString, BOOL bAcceptPartial )
 // GetDispatch --------------------------------------------------------------
 LPDISPATCH CCodeListCtrl::GetDispatch()
 {
-#ifdef _ACTIVEX
-
-	if( NULL == m_lpDispatch )
-	{
-		CComObject<CICodeList>* pNew = NULL;
-		HRESULT hR = pNew->CreateInstance( &pNew );
-
-		if( SUCCEEDED( hR ) )
-		{
-			pNew->AddRef();
-			pNew->m_pCtrl = this;
-			m_lpDispatch = pNew;
-		}
-	}
-
-#endif//#ifdef _ACTIVEX
-
 	return m_lpDispatch;
 }
 

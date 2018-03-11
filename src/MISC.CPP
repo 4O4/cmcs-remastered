@@ -527,27 +527,6 @@ void DrawBetaBackground( HDC hDC, const RECT &rc, COLORREF crWindow )
 }
 #endif
 
-#ifdef _ACTIVEX
-LPTSTR BSTR2TSTR( BSTR str )
-{
-	int nLen = SysStringLen( str );
-#ifdef _UNICODE
-	LPTSTR psz = new TCHAR[ nLen + 1 ];
-	ASSERT( psz );
-	memcpy( psz, bstr, nLen * sizeof( TCHAR ) );
-	psz[ nLen ] = _T('\0');
-#else
-	int nBytes = WideCharToMultiByte( CP_ACP, 0, str, nLen, NULL, NULL, NULL,NULL );
-	LPSTR psz = new TCHAR[ nBytes + 1 ];
-	ASSERT( psz );
-	WideCharToMultiByte( CP_ACP, 0, str, nLen, psz, nBytes, NULL, NULL );
-	psz[ nBytes ] = _T('\0');
-#endif
-	return psz;
-}
-
-#endif
-
 #ifdef _DEBUG
 // this function exists only in the debug build and exists solely to catch compile errors in the CM_xxx macros
 void MacroVerify()

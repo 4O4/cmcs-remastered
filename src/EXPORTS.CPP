@@ -3,32 +3,6 @@
 #include "hkeyctrl.h"
 #include "cedit.h"
 
-#ifdef _ACTIVEX
-#include "initguid.h"
-#include "editx.h"
-#include "editx_i.c"
-#include "ceditx.h"
-#include "rangex.h"
-#include "posx.h"
-#include "langx.h"
-#include "globalsx.h"
-#include "hotkeyx.h"
-#include "rectx.h"
-
-
-CComModule _Module;
-
-BEGIN_OBJECT_MAP(ObjectMap)
-	OBJECT_ENTRY(CLSID_CodeMax, CEditX)
-	OBJECT_ENTRY(CLSID_Range, CRangeX)
-	OBJECT_ENTRY(CLSID_Position, CPositionX)
-	OBJECT_ENTRY(CLSID_Language, CLanguageX)
-	OBJECT_ENTRY(CLSID_Globals, CGlobalsX)
-	OBJECT_ENTRY(CLSID_HotKey, CHotKeyX)
-	OBJECT_ENTRY(CLSID_Rect, CRectX)
-END_OBJECT_MAP()
-#endif
-
 HINSTANCE hInstance;
 
 extern "C" int APIENTRY DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /* lpReserved */)
@@ -39,21 +13,11 @@ extern "C" int APIENTRY DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /* l
 		RegisterLineToolTip();
 		InitCommonControls();
 		RegisterCMHotKey( hInstance );
-
-#ifdef _ACTIVEX
-		CMRegisterControl( CM_VERSION );
-		_Module.Init(ObjectMap, hInstance);
-		DisableThreadLibraryCalls(hInstance);
-#endif
 	}
 	else if (dwReason == DLL_PROCESS_DETACH)
 	{
 		UnregisterLineToolTip();
 		UnregisterCMHotKey( hInstance );
-#ifdef _ACTIVEX
-		_Module.Term();
-		CMUnregisterControl();
-#endif
 	}
 	return 1;   // ok
 }
@@ -156,18 +120,12 @@ extern "C" int CMGetHotKeys( LPBYTE pBuff )
 extern "C" CME_CODE CMSetHotKeys( const LPBYTE pBuff )
 {
 	BOOL bResult = CEdit::SetHotKeys( pBuff );
-	#ifdef _ACTIVEX
-	CEditX::ResetAccelTable();
-	#endif
 	return ( bResult ? CME_SUCCESS : CME_FAILURE );
 }
 
 extern "C" void CMResetDefaultHotKeys()
 {
 	CEdit::SetDefaultHotKeys();
-	#ifdef _ACTIVEX
-	CEditX::ResetAccelTable();
-	#endif
 }
 
 extern "C" int CMGetHotKeysForCmd( WORD wCmd, CM_HOTKEY *pHotKeys )
@@ -180,9 +138,6 @@ extern "C" CME_CODE CMRegisterHotKey( CM_HOTKEY *pHotKey, WORD wCmd )
 	if ( pHotKey )
 	{
 		CEdit::RegisterHotKey( *pHotKey, wCmd );
-		#ifdef _ACTIVEX
-		CEditX::ResetAccelTable();
-		#endif
 		return CME_SUCCESS;
 	}
 	else
@@ -196,9 +151,6 @@ extern "C" CME_CODE CMUnregisterHotKey( CM_HOTKEY *pHotKey )
 	if ( pHotKey )
 	{
 		return ( CEdit::UnregisterHotKey( *pHotKey ) ? CME_SUCCESS : CME_FAILURE );
-		#ifdef _ACTIVEX
-		CEditX::ResetAccelTable();
-		#endif
 	}
 	else
 	{
@@ -244,40 +196,3 @@ extern "C" int CMSetMacro( int nMacro, const LPBYTE pMacroBuff )
 {
 	return CEdit::SetMacro( nMacro, pMacroBuff );
 }
-
-#ifdef _ACTIVEX
-/////////////////////////////////////////////////////////////////////////////
-// Used to determine whether the DLL can be unloaded by OLE
-
-STDAPI DllCanUnloadNow(void)
-{
-	return (_Module.GetLockCount()==0) ? S_OK : S_FALSE;
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// Returns a class factory to create an object of the requested type
-
-STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
-{
-	return _Module.GetClassObject(rclsid, riid, ppv);
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// DllRegisterServer - Adds entries to the system registry
-
-STDAPI DllRegisterServer(void)
-{
-	// registers object, typelib and all interfaces in typelib
-	return _Module.RegisterServer(TRUE);
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// DllUnregisterServer - Removes entries from the system registry
-
-STDAPI DllUnregisterServer(void)
-{
-	_Module.UnregisterServer();
-	return S_OK;
-}
-
-#endif

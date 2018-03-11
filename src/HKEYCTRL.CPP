@@ -363,15 +363,11 @@ LRESULT PASCAL HotKeyWndProc(HWND hWnd, register UINT uMsg, register WPARAM wPar
 	// Other than the above messages, the hotkey control behaves identical to an edit control
 	WNDCLASS wcEdit;
 	VERIFY( GetClassInfo( ( HINSTANCE ) GetWindowLong( hWnd, GWL_HINSTANCE ), _T("EDIT"), &wcEdit ) );
-#ifdef _ACTIVEX
-	return CallWindowProc( wcEdit.lpfnWndProc, hWnd, uMsg, wParam, lParam );
-#else
+
 	#if _MSC_VER  > 1100 
 		return CallWindowProc( ( WNDPROC ) wcEdit.lpfnWndProc, hWnd, uMsg, wParam, lParam );
 	#else
 		return CallWindowProc( ( FARPROC ) wcEdit.lpfnWndProc, hWnd, uMsg, wParam, lParam );
 	#endif
-
-#endif
 }
 

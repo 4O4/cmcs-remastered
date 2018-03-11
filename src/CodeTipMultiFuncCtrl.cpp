@@ -14,11 +14,6 @@
 #include "CodeTipMultiFuncCtrl.h"
 #include "resource.h"
 
-#ifdef _ACTIVEX
-#include "editx.h"
-#include "ICodeTipMultiFunc.h"
-#endif//#ifdef _ACTIVEX
-
 
 #define CX_BTN_ICON		13 // Width, in pixels, of icons used for buttons
 #define CY_BTN_ICON		13 // Height, in pixels, of icons used for buttons
@@ -36,23 +31,6 @@ CCodeTipMultiFuncCtrl::~CCodeTipMultiFuncCtrl()
 // GetDispatch --------------------------------------------------------------
 LPDISPATCH CCodeTipMultiFuncCtrl::GetDispatch()
 {
-#ifdef _ACTIVEX
-
-	if( NULL == m_lpDispatch )
-	{
-		CComObject<CICodeTipMultiFunc>* pNew = NULL;
-		HRESULT hR = pNew->CreateInstance( &pNew );
-
-		if( SUCCEEDED( hR ) )
-		{
-			pNew->AddRef();
-			pNew->m_pCtrl = this;
-			m_lpDispatch = pNew;
-		}
-	}
-
-#endif//#ifdef _ACTIVEX
-
 	return m_lpDispatch;
 }
 
