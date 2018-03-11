@@ -822,7 +822,9 @@ typedef LRESULT CME_CODE;
 //
 //
 
-#define CM_VERSION 0x02100
+#define CM_VERSION 0x10000
+#define CM_COMPATIBLE_VERSION 0x01000
+
 #ifdef __cplusplus
 EXTERN_C CME_CODE CMRegisterControl( DWORD dwVersion = CM_VERSION );
 #else

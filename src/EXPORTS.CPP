@@ -24,7 +24,7 @@ extern "C" int APIENTRY DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /* l
 
 extern "C" CME_CODE CMRegisterControl( DWORD dwVersion )
 {
-	if ( dwVersion == CM_VERSION )
+	if ( dwVersion == CM_VERSION || dwVersion == CM_COMPATIBLE_VERSION )
 	{
 		CEdit::g_dwVersion = dwVersion;
 		return ( CEdit::Register() ? CME_SUCCESS : CME_FAILURE );
