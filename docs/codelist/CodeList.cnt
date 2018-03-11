@@ -1,0 +1,70 @@
+:Base  CODELIST.HLP>:Base  CODELIST.HLP
+:Title CodeList / CodeTip Documentation
+1 Introduction=CJ1GXJ
+1 API Reference
+2 Commands
+3 CMD_CODELIST=CJ1GXK
+3 CMD_CODETIP=CJ1GXL
+2 Macros
+3 CM_GetCurrentToken=CJ1GXM
+2 Messages
+3 CMM_GETCURRENTTOKEN=CJ1GXN
+2 Notifications
+3 CMN_CODELIST=CJ1GXO
+3 CMN_CODELISTCANCEL=CJ1GXP
+3 CMN_CODELISTCHAR=CJ1GXQ
+3 CMN_CODELISTSELMADE=CJ1GXR
+3 CMN_CODETIP=1XB_9DH
+3 CMN_CODETIPCANCEL=3.TU8H4
+3 CMN_CODETIPUPDATE=3.TU8H5
+2 Structures
+3 CM_CODELISTDATA=1XB_9DA
+3 CM_CODELISTKEYDATA=1XB_9DB
+3 CM_CODETIPDATA=1XB_9DC
+3 CM_CODETIPHIGHLIGHTDATA=1XB_9DD
+3 CM_CODETIPFUNCHIGHLIGHTDATA=1XB_9DE
+3 CM_CODETIPMULTIFUNCDATA=1XB_9DF
+1 ActiveX Reference
+2 Events
+3 CodeList=HZP0CL
+3 CodeListCancel=HZP0CQ
+3 CodeListChar=HZP0CP
+3 CodeListSelMade=HZP0CR
+3 CodeTip=HZP0CM
+3 CodeTipCancel=HZP0DK
+3 CodeTipUpdate=HZP0DJ
+2 Interfaces
+3 ICodeList Interface
+4 Overview=1XB_9DG
+4 Methods
+5 AddItem=HZP0AS
+5 Destroy=HZP0AJ
+5 FindString=HZP0AK
+5 GetItemData=HZP0AL
+5 GetItemText=HZP0AM
+4 Properties
+5 hImageList=HZP0AN
+5 hWnd=HZP0AO
+5 SelectedItem=HZP0AP
+3 ICodeTip Interface
+4 Overview=HZP0AQ
+4 Methods
+5 Destroy=HZP0AR
+4 Properties
+5 hWnd=HZP0BS
+5 TipText=HZP0BJ
+5 TipTextLength=HZP0BK
+3 ICodeTipHighlight Interface
+4 Overview=HZP0BL
+4 Properties
+5 HighlightStartPos=HZP0BM
+5 HighlightEndPos=HZP0BN
+3 ICodeTipFuncHighlight Interface
+4 Overview=HZP0BO
+4 Properties
+5 Argument=HZP0BP
+3 ICodeTipMultiFunc Interface
+4 Overview=HZP0BQ
+4 Properties
+5 CurrentFunction=HZP0BR
+5 FunctionCount=HZP0CS
