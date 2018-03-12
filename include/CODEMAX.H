@@ -425,6 +425,7 @@
 #define CMLANG_JAVA        _T("Java")
 #define CMLANG_HTML        _T("HTML")
 #define CMLANG_XML         _T("XML")
+#define CMLANG_PLSQL         _T("PL/SQL") // TODO: Extract to plugin
 
 // language styles
 #define CMLS_PROCEDURAL    0

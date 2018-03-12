@@ -279,6 +279,7 @@ BOOL CEdit::Register()
 		CMRegisterLanguage( CMLANG_SQL, NULL );
 		CMRegisterLanguage( CMLANG_HTML, NULL );
 		CMRegisterLanguage( CMLANG_XML, NULL );
+		CMRegisterLanguage( CMLANG_PLSQL, NULL ); // TODO: Extract to plugin
 
 		// calculate all upper case conversions and bit states for each character in the Ansi charset
 		for ( int ch = 0; ch < 256; ch++ )
@@ -456,6 +457,9 @@ void CEdit::InitializeWindow( LPCREATESTRUCT lpcs )
 	// to CreateWindow().  Since we handle the scroll styles -- not Windows, we don't want Windows to think
 	// it has control of the scrollbars.
 	SetWindowPos( m_hWnd, NULL, -1, -1, -1, -1, SWP_NOZORDER | SWP_NOMOVE | SWP_NOSIZE | SWP_DRAWFRAME );
+	
+	CM_SetLanguage( m_hWnd, NULL ); // TODO
+	CM_SetLanguage( m_hWnd, CMLANG_PLSQL ); // TODO: Make default language configurable
 }
 
 // ReplaceSelection() is the one-and-only place where text is added to the buffer.  Everything goes thru this

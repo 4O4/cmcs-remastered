@@ -370,6 +370,7 @@ class CEdit
 		static CM_LANGUAGE g_LangJava;
 		static CM_LANGUAGE g_LangHTML;
 		static CM_LANGUAGE g_LangXML;
+		static CM_LANGUAGE g_LangPLSQL; // TODO: Extract to plugin
 		static _defhotkeyrec g_DefHotKeys[];
 		static int g_nDefHotKeyCount;
 
