@@ -198,6 +198,8 @@
 // 2.1
 #define CMM_SETBORDERSTYLE             ( WM_USER + 4160 )
 #define CMM_GETBORDERSTYLE             ( WM_USER + 4170 )
+
+// CodeSense
 #define CMM_GETCURRENTTOKEN            ( WM_USER + 4180 )
 
 
@@ -232,6 +234,8 @@
 
 // 2.1
 #define CMN_FINDWRAPPED                310      // a find operation wrapped to start/end of buffer
+
+// CodeSense
 #define CMN_CODELIST                   320      // user has activated CodeList control
 #define CMN_CODELISTSELMADE            330      // user has selected an item in CodeList control
 #define CMN_CODELISTCANCEL             340      // user cancelled CodeList control
@@ -391,7 +395,8 @@
 #define CMD_WHITESPACEDISPLAYOFF        ( CMD_FIRST + 139 )
 #define CMD_OVERTYPEON                  ( CMD_FIRST + 140 )
 #define CMD_OVERTYPEOFF                 ( CMD_FIRST + 141 )
-// 2.1
+
+// CodeSense
 #define CMD_CODELIST                    ( CMD_FIRST + 142 )
 #define CMD_CODETIP                     ( CMD_FIRST + 143 )
 #define CMD_LAST                        ( CMD_FIRST + 143 )
