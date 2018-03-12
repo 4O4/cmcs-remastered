@@ -429,6 +429,7 @@ class CEdit
 		COLORREF GetHDividerLineColor() const	{ return DEF_CLRHDIVIDERLINES; }
 		//COLORREF GetVDividerLineColor() const	{ return m_Colors.crVDividerLines; } // TODO: restore this line and remove line below
 		COLORREF GetVDividerLineColor() const	{ return DEF_CLRVDIVIDERLINES; }
+		HFONT GetLineNumberFont() const	{ return m_font[ m_FontStyles.byLineNumber ].hFont; }
 		COLORREF GetTokenColor( CBuffer::LangToken eToken, BOOL bTextColor ) const;
 		COLORREF GetWindowColor( BOOL bSafe ) const;
 		COLORREF GetLeftMarginColor() const	 { return m_Colors.crLeftMargin; }

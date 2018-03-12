@@ -349,11 +349,11 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			FontStyles.byScopeKeyword = m_byFontStyles[ IDX_SCOPEKEYWORD ];
 			FontStyles.byComment = m_byFontStyles[ IDX_COMMENT ];
 			FontStyles.byString = m_byFontStyles[ IDX_STRING ];
-			/*FontStyles.byTagText = m_byFontStyles[ IDX_TAGTEXT ];
+			FontStyles.byTagText = m_byFontStyles[ IDX_TAGTEXT ];
 			FontStyles.byTagEntity = m_byFontStyles[ IDX_TAGENT ];
 			FontStyles.byTagElementName = m_byFontStyles[ IDX_TAGELEMNAME ];
 			FontStyles.byTagAttributeName = m_byFontStyles[ IDX_TAGATTRNAME ];
-			FontStyles.byLineNumber = m_byFontStyles[ IDX_LINENUMBER ];*/ // TODO: uncomment when 2.0 compatible structs are restored
+			FontStyles.byLineNumber = m_byFontStyles[ IDX_LINENUMBER ];
 
 			SendMessage( hWnd, CMM_SETFONTSTYLES, 0, ( LPARAM ) &FontStyles );
 		}
@@ -643,11 +643,11 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			pInfo->m_byFontStyles[ IDX_SCOPEKEYWORD ] = pCtrl->m_FontStyles.byScopeKeyword;
 			pInfo->m_byFontStyles[ IDX_COMMENT ] = pCtrl->m_FontStyles.byComment;
 			pInfo->m_byFontStyles[ IDX_STRING ] = pCtrl->m_FontStyles.byString;
-			/*pInfo->m_byFontStyles[ IDX_TAGTEXT ] = pCtrl->m_FontStyles.byTagText;
+			pInfo->m_byFontStyles[ IDX_TAGTEXT ] = pCtrl->m_FontStyles.byTagText;
 			pInfo->m_byFontStyles[ IDX_TAGENT ] = pCtrl->m_FontStyles.byTagEntity;
 			pInfo->m_byFontStyles[ IDX_TAGELEMNAME ] = pCtrl->m_FontStyles.byTagElementName;
 			pInfo->m_byFontStyles[ IDX_TAGATTRNAME ] = pCtrl->m_FontStyles.byTagAttributeName;
-			pInfo->m_byFontStyles[ IDX_LINENUMBER ] = pCtrl->m_FontStyles.byLineNumber;*/ // TODO: uncomment when 2.0 compatible structs are restored
+			pInfo->m_byFontStyles[ IDX_LINENUMBER ] = pCtrl->m_FontStyles.byLineNumber;
 
 			int nSize = GetObject( pCtrl->GetFont( FALSE ), sizeof( LOGFONT ), NULL );
 			VERIFY( GetObject( pCtrl->GetFont( FALSE ), nSize, &pInfo->m_lf ) );

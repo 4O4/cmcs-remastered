@@ -444,9 +444,9 @@ typedef struct _CM_LANGUAGE {
     LPCTSTR pszStringDelims;             // The string literal delimiters (e.g. "\"\n'") -- also includes character literals
     TCHAR   chEscape;                    // The escape character
     TCHAR   chTerminator;                // The statement terminator char (usually ';')
-    //LPCTSTR pszTagElementNames;          // Tag-based element names delimited by '\n' // TODO: restore
-    //LPCTSTR pszTagAttributeNames;        // Tag-based attribute names delimited by '\n' // TODO: restore
-    //LPCTSTR pszTagEntities;              // Tag-based entities delimited by '\n' // TODO: restore
+    LPCTSTR pszTagElementNames;          // Tag-based element names delimited by '\n'
+    LPCTSTR pszTagAttributeNames;        // Tag-based attribute names delimited by '\n'
+    LPCTSTR pszTagEntities;              // Tag-based entities delimited by '\n'
 } CM_LANGUAGE;
 
 /////////////////////////////////////////////////////////////
@@ -504,11 +504,11 @@ typedef struct _CM_FONTSTYLES {
     BYTE byScopeKeyword;         // scope keyword font style
     BYTE byComment;              // comment font style
     BYTE byString;               // string font style
-    //BYTE byTagText;              // plain tag text font style // TODO: restore
-    //BYTE byTagEntity;            // tag entity font style // TODO: restore
-    //BYTE byTagElementName;       // tag element name font style // TODO: restore
-    //BYTE byTagAttributeName;     // tag attribute name font style // TODO: restore
-    //BYTE byLineNumber;           // line number font style // TODO: restore
+    BYTE byTagText;              // plain tag text font style
+    BYTE byTagEntity;            // tag entity font style
+    BYTE byTagElementName;       // tag element name font style
+    BYTE byTagAttributeName;     // tag attribute name font style
+    BYTE byLineNumber;           // line number font style
 } CM_FONTSTYLES;
 
 /////////////////////////////////////////////////////////////
@@ -574,7 +574,7 @@ typedef struct _CM_POSITION {
 typedef struct _CM_RANGE {
     CM_POSITION posStart;  // the anchor
     CM_POSITION posEnd;    // the extension (if same as anchor, selection is empty)
-    //BOOL bColumnSel;       // TRUE if is a column selection, FALSE if paragragh selection // TODO: restore
+    BOOL bColumnSel;       // TRUE if is a column selection, FALSE if paragragh selection
 } CM_RANGE;
 
 /////////////////////////////////////////////////////////////

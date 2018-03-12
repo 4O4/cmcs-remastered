@@ -132,11 +132,11 @@ CEdit::CEdit( HWND hWnd )
 	m_FontStyles.byString				= DEF_FSSTRING;
 	m_FontStyles.byText					= DEF_FSTEXT;
 	m_FontStyles.byNumber				= DEF_FSNUMBER;
-	/*m_FontStyles.byTagText				= DEF_FSTAGTEXT;
+	m_FontStyles.byTagText				= DEF_FSTAGTEXT;
 	m_FontStyles.byTagEntity			= DEF_FSTAGENT;
 	m_FontStyles.byTagElementName		= DEF_FSTAGELEMNAME;
 	m_FontStyles.byTagAttributeName		= DEF_FSTAGATTRNAME;
-	m_FontStyles.byLineNumber			= DEF_FSLINENUMBER;*/ // TODO: uncomment when 2.0 compatible structs are restored
+	m_FontStyles.byLineNumber			= DEF_FSLINENUMBER;
 
 	m_LineNum.bEnabled					= DEF_LINENUMENABLE;
 	m_LineNum.nStartAt					= DEF_LINENUMBERSTART;
@@ -1599,11 +1599,11 @@ HFONT CEdit::GetTokenFont( CBuffer::LangToken eToken, long &cxExtraSpacing, long
 			case CBuffer::eStringDelim:						nFont = m_FontStyles.byString; break;
 			case CBuffer::eEscapeSeq:
 			case CBuffer::eText:							nFont = m_FontStyles.byText; break;
-			//case CBuffer::eTagText:							nFont = m_FontStyles.byTagText; break; // TODO: uncomment when 2.0 compatible structs are restored
+			case CBuffer::eTagText:							nFont = m_FontStyles.byTagText; break;
 			case CBuffer::eNumber:							nFont = m_FontStyles.byNumber; break;
-			/*case CBuffer::eTagEntity:						nFont = m_FontStyles.byTagEntity; break;
+			case CBuffer::eTagEntity:						nFont = m_FontStyles.byTagEntity; break;
 			case CBuffer::eTagElementName:					nFont = m_FontStyles.byTagElementName; break;
-			case CBuffer::eTagAttributeName:				nFont = m_FontStyles.byTagAttributeName; break;*/ // TODO: uncomment when 2.0 compatible structs are restored
+			case CBuffer::eTagAttributeName:				nFont = m_FontStyles.byTagAttributeName; break;
 			default:										nFont = CM_FONT_NORMAL; break;
 		}
 	}

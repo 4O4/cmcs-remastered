@@ -2002,7 +2002,7 @@ LRESULT CEdit::OnGetSel( WPARAM wParam, LPARAM lParam )
 		{
 			m_Selection.GetBufferSelection( pRange->posStart.nCol, pRange->posStart.nLine, pRange->posEnd.nCol, pRange->posEnd.nLine );
 		}
-		//pRange->bColumnSel = m_Selection.IsColumnSel(); // TODO: uncomment when 2.0 compatible structs are restored
+		pRange->bColumnSel = m_Selection.IsColumnSel();
 		return CME_SUCCESS;
 	}
 	else
@@ -2017,7 +2017,7 @@ LRESULT CEdit::OnSetSel( WPARAM wParam, LPARAM lParam )
 	if ( lParam && RangeIsValid( pRange ) )
 	{
 		m_Selection.SetExtendedSelection( pRange->posStart.nCol, pRange->posStart.nLine, pRange->posEnd.nCol, pRange->posEnd.nLine, wParam != 0 );
-		//m_Selection.EnableColumnSel( pRange->bColumnSel ); // TODO: uncomment when 2.0 compatible structs are restored
+		m_Selection.EnableColumnSel( pRange->bColumnSel );
 		// if in the middle of dragging or whatever, bail now -- the caller
 		// modified the selection and probably doesn't want the drag to continue.
 		CancelMode();

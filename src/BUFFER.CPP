@@ -1162,10 +1162,10 @@ BOOL CBuffer::SetLanguage( CM_LANGUAGE *pLang )
 		  { &nMultiLineComments, &m_nMultiLineComments, &pLang->pszMultiLineComments1, &m_pMultiLineComments1, &m_pMultiLineComments1Unsorted, CHAR_MLCOMMENT1 },
 		  { &nMultiLineComments2, &m_nMultiLineComments, &pLang->pszMultiLineComments2, &m_pMultiLineComments2, &m_pMultiLineComments2Unsorted, CHAR_MLCOMMENT2 },
 		  { &nScopeKeywords, &m_nScopeKeywords, &pLang->pszScopeKeywords1, &m_pScopeKeywords1, &m_pScopeKeywords1Unsorted, CHAR_SCOPE1 },
-		  { &nScopeKeywords2, &m_nScopeKeywords, &pLang->pszScopeKeywords2, &m_pScopeKeywords2, &m_pScopeKeywords2Unsorted, CHAR_SCOPE2 }/*,
+		  { &nScopeKeywords2, &m_nScopeKeywords, &pLang->pszScopeKeywords2, &m_pScopeKeywords2, &m_pScopeKeywords2Unsorted, CHAR_SCOPE2 },
 		  { &nTagEntities, &m_nTagEntities, &pLang->pszTagEntities, &m_pTagEntities, &m_pTagEntitiesUnsorted, CHAR_TAG_ENTITY },
 		  { &nTagElementNames, &m_nTagElementNames, &pLang->pszTagElementNames, &m_pTagElementNames, &m_pTagElementNamesUnsorted, CHAR_TAG_ELEMENT_NAME },
-		  { &nTagAttributeNames, &m_nTagAttributeNames, &pLang->pszTagAttributeNames, &m_pTagAttributeNames, &m_pTagAttributeNamesUnsorted, CHAR_TAG_ATTRIBUTE_NAME }*/ }; // TODO: uncomment when 2.0 compatible structs are restored
+		  { &nTagAttributeNames, &m_nTagAttributeNames, &pLang->pszTagAttributeNames, &m_pTagAttributeNames, &m_pTagAttributeNamesUnsorted, CHAR_TAG_ATTRIBUTE_NAME } };
 
 	int cbLangBuff = 0;
 

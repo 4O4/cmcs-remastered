@@ -341,7 +341,7 @@ void CEdit::DoSelfTest()
 	CM_DeleteSel( m_hWndTest );
 	ASSERT( CM_GetLineLength( m_hWndTest, 0, FALSE ) == 0 );
 	CM_Undo( m_hWndTest );
-	CM_RANGE cmRange = { { 0, 1 }, { 1, 1 }/*, FALSE */ }; // TODO: uncomment when 2.0 compatible structs are restored
+	CM_RANGE cmRange = { { 0, 1 }, { 1, 1 }, FALSE };
 	ASSERT( CM_SetSel( m_hWndTest, &cmRange, FALSE ) == CME_SUCCESS );
 	CM_RANGE cmRange2;
 	ASSERT( CM_GetSel( m_hWndTest, &cmRange2, FALSE ) == CME_SUCCESS );
