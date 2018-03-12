@@ -570,8 +570,16 @@ void MacroVerify()
 		CM_SetColors( hWnd, pColors );
 	}
 	{
+		CM_COLORS_EX *pColors = 0;
+		CM_SetColorsEx( hWnd, pColors );
+	}
+	{
 		CM_COLORS *pColors = 0;
 		CM_GetColors( hWnd, pColors );
+	}
+	{
+		CM_COLORS_EX *pColors = 0;
+		CM_GetColorsEx( hWnd, pColors );
 	}
 	{
 		BOOL bEnable = 0;

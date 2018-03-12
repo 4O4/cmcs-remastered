@@ -110,7 +110,7 @@ CEdit::CEdit( HWND hWnd )
 	m_Colors.crCommentBk		        = DEF_CLRCOMMENTBK;
 	m_Colors.crString			        = DEF_CLRSTRING;
 	m_Colors.crStringBk			        = DEF_CLRSTRINGBK;
-	/*m_Colors.crTagText				    = DEF_CLRTAGTEXT;
+	m_Colors.crTagText				    = DEF_CLRTAGTEXT;
 	m_Colors.crTagTextBk			    = DEF_CLRTAGTEXTBK;
     m_Colors.crTagEntity		        = DEF_CLRTAGENT;
 	m_Colors.crTagEntityBk		        = DEF_CLRTAGENTBK;
@@ -122,7 +122,7 @@ CEdit::CEdit( HWND hWnd )
     m_Colors.crLineNumberBk				= DEF_CLRLINENUMBERBK;
 	m_Colors.crHDividerLines			= DEF_CLRHDIVIDERLINES;
 	m_Colors.crVDividerLines			= DEF_CLRVDIVIDERLINES;
-	m_Colors.crHighlightedLine			= DEF_CLRHIGHLIGHTEDLINE;*/ // TODO: uncomment when 2.0 compatible structs are restored
+	m_Colors.crHighlightedLine			= DEF_CLRHIGHLIGHTEDLINE;
 
 	// default font styles
 	m_FontStyles.byKeyword				= DEF_FSKEYWORD;
@@ -1568,11 +1568,11 @@ COLORREF CEdit::GetTokenColor( CBuffer::LangToken eToken, BOOL bTextColor ) cons
 		case CBuffer::eStringDelim: return bTextColor ? m_Colors.crString : m_Colors.crStringBk;
 		case CBuffer::eEscapeSeq:
 		case CBuffer::eText: return bTextColor ? m_Colors.crText : m_Colors.crTextBk;
-		//case CBuffer::eTagText: return bTextColor ? m_Colors.crTagText : m_Colors.crTagTextBk; // TODO: uncomment when 2.0 compatible structs are restored
+		case CBuffer::eTagText: return bTextColor ? m_Colors.crTagText : m_Colors.crTagTextBk;
 		case CBuffer::eNumber: return bTextColor ? m_Colors.crNumber : m_Colors.crNumberBk;
-		/*case CBuffer::eTagEntity: return bTextColor ? m_Colors.crTagEntity : m_Colors.crTagEntityBk;
+		case CBuffer::eTagEntity: return bTextColor ? m_Colors.crTagEntity : m_Colors.crTagEntityBk;
 		case CBuffer::eTagElementName: return bTextColor ? m_Colors.crTagElementName : m_Colors.crTagElementNameBk;
-		case CBuffer::eTagAttributeName: return bTextColor ? m_Colors.crTagAttributeName : m_Colors.crTagAttributeNameBk;*/ // TODO: uncomment when 2.0 compatible structs are restored
+		case CBuffer::eTagAttributeName: return bTextColor ? m_Colors.crTagAttributeName : m_Colors.crTagAttributeNameBk;
 	}
 
 	ASSERT( FALSE );

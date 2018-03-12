@@ -40,8 +40,12 @@ class CCodeMaxCtrl : public CWnd
 		{ ASSERT( ::IsWindow( m_hWnd ) ); return CM_SetText( m_hWnd, pszText ); }
 	CME_CODE SetColors( const CM_COLORS *pColors )
 		{ ASSERT( ::IsWindow( m_hWnd ) ); return CM_SetColors( m_hWnd, pColors ); }
+	CME_CODE SetColorsEx( const CM_COLORS *pColors )
+		{ ASSERT( ::IsWindow( m_hWnd ) ); return CM_SetColorsEx( m_hWnd, pColors ); }
 	CME_CODE GetColors( CM_COLORS *pColors ) const
 		{ ASSERT( ::IsWindow( m_hWnd ) ); return CM_GetColors( m_hWnd, pColors ); }
+	CME_CODE GetColorsEx( CM_COLORS *pColors ) const
+		{ ASSERT( ::IsWindow( m_hWnd ) ); return CM_GetColorsEx( m_hWnd, pColors ); }
 	CME_CODE EnableWhitespaceDisplay( BOOL bEnable = TRUE )
 		{ ASSERT( ::IsWindow( m_hWnd ) ); return CM_EnableWhitespaceDisplay( m_hWnd, bEnable ); }
 	BOOL IsWhitespaceDisplayEnabled() const

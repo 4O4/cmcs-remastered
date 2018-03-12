@@ -202,6 +202,10 @@
 // CodeSense
 #define CMM_GETCURRENTTOKEN            ( WM_USER + 4180 )
 
+// 10.0
+#define CMM_SETCOLORSEX                ( WM_USER + 4210 )
+#define CMM_GETCOLORSEX                ( WM_USER + 4220 )
+
 
 /////////////////////////////////////////////////////////////
 //
@@ -475,20 +479,42 @@ typedef struct _CM_COLORS {
     COLORREF crCommentBk;            // comment background color
     COLORREF crString;               // string foreground color
     COLORREF crStringBk;             // string background color
-    //COLORREF crTagText;              // plain tag text foreground color // TODO: restore
-    //COLORREF crTagTextBk;            // plain tag text background color // TODO: restore
-    //COLORREF crTagEntity;            // tag entity foreground color // TODO: restore
-    //COLORREF crTagEntityBk;          // tag entity background color // TODO: restore
-    //COLORREF crTagElementName;       // tag element name foreground color // TODO: restore
-    //COLORREF crTagElementNameBk;     // tag element name background color // TODO: restore
-    //COLORREF crTagAttributeName;     // tag attribute name foreground color // TODO: restore
-    //COLORREF crTagAttributeNameBk;   // tag attribute name background color // TODO: restore
-    //COLORREF crLineNumber;           // line number foreground color // TODO: restore
-    //COLORREF crLineNumberBk;         // line number background color // TODO: restore
-    //COLORREF crHDividerLines;        // line number separate line color // TODO: restore
-    //COLORREF crVDividerLines;        // left margin separate line color // TODO: restore
-    //COLORREF crHighlightedLine;      // highlighted line color // TODO: restore
 } CM_COLORS;
+
+typedef struct _CM_COLORS_EX {
+    COLORREF crWindow;               // window background color
+    COLORREF crLeftMargin;           // left margin background color
+    COLORREF crBookmark;             // bookmark foreground color
+    COLORREF crBookmarkBk;           // bookmark background color
+    COLORREF crText;                 // plain text foreground color
+    COLORREF crTextBk;               // plain text background color
+    COLORREF crNumber;               // numeric literal foreground color
+    COLORREF crNumberBk;             // numeric literal background color
+    COLORREF crKeyword;              // keyword foreground color
+    COLORREF crKeywordBk;            // keyword background color
+    COLORREF crOperator;             // operator foreground color
+    COLORREF crOperatorBk;           // operator background color
+    COLORREF crScopeKeyword;         // scope keyword foreground color
+    COLORREF crScopeKeywordBk;       // scope keyword background color
+    COLORREF crComment;              // comment foreground color
+    COLORREF crCommentBk;            // comment background color
+    COLORREF crString;               // string foreground color
+    COLORREF crStringBk;             // string background color
+
+    COLORREF crTagText;              // plain tag text foreground color
+    COLORREF crTagTextBk;            // plain tag text background color
+    COLORREF crTagEntity;            // tag entity foreground color
+    COLORREF crTagEntityBk;          // tag entity background color
+    COLORREF crTagElementName;       // tag element name foreground color
+    COLORREF crTagElementNameBk;     // tag element name background color
+    COLORREF crTagAttributeName;     // tag attribute name foreground color
+    COLORREF crTagAttributeNameBk;   // tag attribute name background color
+    COLORREF crLineNumber;           // line number foreground color
+    COLORREF crLineNumberBk;         // line number background color
+    COLORREF crHDividerLines;        // line number separate line color
+    COLORREF crVDividerLines;        // left margin separate line color
+    COLORREF crHighlightedLine;      // highlighted line color
+} CM_COLORS_EX;
 
 /////////////////////////////////////////////////////////////
 //
@@ -882,8 +908,12 @@ EXTERN_C CME_CODE CMUnregisterCommand( WORD wCmd );
                 ( ( CME_CODE ) ::SendMessage( hWnd, CMM_SETTEXT, 0, ( LPARAM ) ( pszText ) ) )
 #define CM_SetColors( hWnd, pColors ) \
                 ( ( CME_CODE ) ::SendMessage( hWnd, CMM_SETCOLORS, 0, ( LPARAM ) ( pColors ) ) )
+#define CM_SetColorsEx( hWnd, pColors ) \
+                ( ( CME_CODE ) ::SendMessage( hWnd, CMM_SETCOLORSEX, 0, ( LPARAM ) ( pColors ) ) )
 #define CM_GetColors( hWnd, pColors ) \
                 ( ( CME_CODE ) ::SendMessage( hWnd, CMM_GETCOLORS, 0, ( LPARAM ) ( pColors ) ) )
+#define CM_GetColorsEx( hWnd, pColors ) \
+                ( ( CME_CODE ) ::SendMessage( hWnd, CMM_GETCOLORSEX, 0, ( LPARAM ) ( pColors ) ) )
 #define CM_EnableWhitespaceDisplay( hWnd, bEnable ) \
                 ( ( CME_CODE ) ::SendMessage( hWnd, CMM_ENABLEWHITESPACEDISPLAY, ( WPARAM ) ( bEnable ), 0 ) )
 #define CM_IsWhitespaceDisplayEnabled( hWnd ) \

@@ -302,7 +302,7 @@ void CPropInfo::CommitChanges( eProps eWhat )
 		}
 		else if ( eWhat == eColorFont )
 		{
-			CM_COLORS Colors;
+			CM_COLORS_EX Colors;
 			ZeroMemory( &Colors, sizeof( Colors ) );
 			Colors.crWindow = m_crFore[ IDX_WINDOW ];
 			Colors.crLeftMargin = m_crFore[ IDX_LMARGIN ];
@@ -322,7 +322,7 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			Colors.crCommentBk = m_crBack[ IDX_COMMENT ];
 			Colors.crString = m_crFore[ IDX_STRING ];
 			Colors.crStringBk = m_crBack[ IDX_STRING ];
-			/*Colors.crTagText = m_crFore[ IDX_TAGTEXT ];
+			Colors.crTagText = m_crFore[ IDX_TAGTEXT ];
 			Colors.crTagTextBk = m_crBack[ IDX_TAGTEXT ];
 			Colors.crTagEntity = m_crFore[ IDX_TAGENT ];
 			Colors.crTagEntityBk = m_crBack[ IDX_TAGENT ];
@@ -334,8 +334,8 @@ void CPropInfo::CommitChanges( eProps eWhat )
 			Colors.crLineNumberBk = m_crBack[ IDX_LINENUMBER ];
 			Colors.crHDividerLines = m_crFore[ IDX_HDIVIDERLINES ];
 			Colors.crVDividerLines = m_crFore[ IDX_VDIVIDERLINES ];
-			Colors.crHighlightedLine = m_crFore[ IDX_HIGHLIGHTEDLINE ];*/// TODO: uncomment when 2.0 compatible structs are restored
-			SendMessage( hWnd, CMM_SETCOLORS, 0, ( LPARAM ) &Colors );
+			Colors.crHighlightedLine = m_crFore[ IDX_HIGHLIGHTEDLINE ];
+			SendMessage( hWnd, CMM_SETCOLORSEX, 0, ( LPARAM ) &Colors );
 
 			SendMessage( hWnd, WM_SETFONT, ( WPARAM ) CreateFontIndirect( &m_lf ), MAKELPARAM( TRUE, 0 ) );
 			pCtrl->m_bOwnFont = TRUE;
@@ -601,7 +601,7 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			pInfo->m_crBack[ IDX_COMMENT ] = pCtrl->m_Colors.crCommentBk;
 			pInfo->m_crFore[ IDX_STRING ] = pCtrl->m_Colors.crString;
 			pInfo->m_crBack[ IDX_STRING ] = pCtrl->m_Colors.crStringBk;
-			/*pInfo->m_crFore[ IDX_TAGTEXT ] = pCtrl->m_Colors.crTagText;
+			pInfo->m_crFore[ IDX_TAGTEXT ] = pCtrl->m_Colors.crTagText;
 			pInfo->m_crBack[ IDX_TAGTEXT ] = pCtrl->m_Colors.crTagTextBk;
 			pInfo->m_crFore[ IDX_TAGENT ] = pCtrl->m_Colors.crTagEntity;
 			pInfo->m_crBack[ IDX_TAGENT ] = pCtrl->m_Colors.crTagEntityBk;
@@ -613,7 +613,7 @@ BOOL CALLBACK PageColorFontDlgProc( HWND hWndDlg, UINT uMsg, WPARAM wParam, LPAR
 			pInfo->m_crBack[ IDX_LINENUMBER ] = pCtrl->m_Colors.crLineNumberBk;
 			pInfo->m_crFore[ IDX_HDIVIDERLINES ] = pCtrl->m_Colors.crHDividerLines;
 			pInfo->m_crFore[ IDX_VDIVIDERLINES ] = pCtrl->m_Colors.crVDividerLines;
-			pInfo->m_crFore[ IDX_HIGHLIGHTEDLINE ] = pCtrl->m_Colors.crHighlightedLine;*/ // TODO: uncomment when 2.0 compatible structs are restored
+			pInfo->m_crFore[ IDX_HIGHLIGHTEDLINE ] = pCtrl->m_Colors.crHighlightedLine;
 
 			// fill the font style combo
 			struct {
